@@ -1,0 +1,26 @@
+DELIMITER //
+
+CREATE PROCEDURE GetNonNullColumnsForDeptId(IN p_dept_id INT)
+BEGIN
+    SELECT p_dept_id AS dept_id, 'report_lvl1' AS column_name, report_lvl1 AS column_value
+    FROM data_approvals
+    WHERE p_dept_id = dept_id AND report_lvl1 IS NOT NULL
+    UNION ALL
+    SELECT p_dept_id AS dept_id, 'report_lvl2' AS column_name, report_lvl2 AS column_value
+    FROM data_approvals
+    WHERE p_dept_id = dept_id AND report_lvl2 IS NOT NULL
+    UNION ALL
+    SELECT p_dept_id AS dept_id, 'report_lvl3' AS column_name, report_lvl3 AS column_value
+    FROM data_approvals
+    WHERE p_dept_id = dept_id AND report_lvl3 IS NOT NULL
+    UNION ALL
+    SELECT p_dept_id AS dept_id, 'report_lvl4' AS column_name, report_lvl4 AS column_value
+    FROM data_approvals
+    WHERE p_dept_id = dept_id AND report_lvl4 IS NOT NULL
+    UNION ALL
+    SELECT p_dept_id AS dept_id, 'report_lvl5' AS column_name, report_lvl5 AS column_value
+    FROM data_approvals
+    WHERE p_dept_id = dept_id AND report_lvl5 IS NOT NULL;
+END//
+
+DELIMITER ;
